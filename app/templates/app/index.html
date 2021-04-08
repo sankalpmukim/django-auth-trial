@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    {% if user %}
+    {% if user.is_authenticated %}
     {{ user.username }} has logged in!
     {% else %}
     No one has logged in
