@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.views import LoginView, LogoutView
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -16,3 +16,10 @@ class UserLogin(LoginView):
 
 class UserLogout(LogoutView):
     template_name = 'app/logoutpage.html'
+
+
+@login_required
+def loginrequired(request):
+    return render(request, 'app/loginrequired.html', {
+        'user': request.user
+    })
